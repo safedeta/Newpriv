@@ -10,10 +10,12 @@ function App() {
     <>
       {/* Header */}
       <Header />
-
+      
       {/* Navbar */}
       <Navbar />
-
+      <div className="text-center">
+      <h1 className="text-4xl font-bold text-blue-500">¡TailwindCSS funciona!</h1>
+      </div>
       {/* Main content */}
       <main>
         <Home />
