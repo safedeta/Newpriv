@@ -1,29 +1,14 @@
 import React from 'react';
+import Navbar from './Navbar.jsx';
 
 const Header = () => {
   return (
     <header className="bg-blue-600 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Mi Sitio Web</h1>
-        <nav>
-          <ul className="flex space-x-4">
-            <li>
-              <a href="/" className="hover:text-gray-300">
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a href="/about" className="hover:text-gray-300">
-                Acerca de
-              </a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:text-gray-300">
-                Contacto
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <div className="container mx-auto flex items-center">
+        <h1 className="text-3xl font-bold text-left">Sitio muy epico</h1>
+        <div className='flex-1 flex justify-left'>
+          <Navbar />
+        </div>
       </div>
     </header>
   );
