@@ -1,40 +1,59 @@
-import React from 'react';
-import {
-  MDBFooter,
-  MDBContainer,
-  MDBCol,
-  MDBRow
-} from 'mdb-react-ui-kit';
+import React from "react";
 
-export default function App() {
+const Footer = () => {
   return (
-    <MDBFooter style={{ backgroundColor:'#707882'}} className='text-center text-lg-left w-full'>
-      <MDBContainer className='p-2'>
-        <MDBRow>
-          <MDBCol lg='5' md='12' className='mb-2 mb-md-0'>
-            <h5 className='text-uppercase'>Footer Sobre Samuel</h5>
+    <footer className="bg-gray-800 text-gray-400 py-6">
+      <div className="container mx-auto text-center">
+        {/* Logo o Nombre */}
+        <h2 className="text-gray-100 text-lg font-semibold">
+          Plataforma Educativa
+        </h2>
 
-            <p className='text-sm'>
-              Samuel es un mama huevo, yo lo se, federico lo sabe todos lo sabemos, quien lo niegue es un falso.
-            </p>
-          </MDBCol>
+        {/* Links de navegación */}
+        <nav className="mt-4">
+          <ul className="flex justify-center gap-6">
+            <li>
+              <a
+                href="#"
+                className="hover:text-gray-100 transition"
+              >
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="hover:text-gray-100 transition"
+              >
+                Cursos
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="hover:text-gray-100 transition"
+              >
+                Sobre nosotros
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="hover:text-gray-100 transition"
+              >
+                Contacto
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-          <MDBCol lg='5' md='12' className='mb-2 mb-md-0'>
-            <h5 className='text-uppercase'>Footer Sobre Federico</h5>
-
-            <p className='text-sm'>
-              Federico es un tieso ahi mas tieso que tiesin, eso yo lo sé, por eso cree el bot de discord mas increible de todos: &#34;Tiesorico 2.0&#34;, sin embargo el mundo no me comprende y no lo usan, traste :c
-            </p>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-
-      <div className='text-center text-white p-1' style={{ backgroundColor: '#494a4d'}}>
-        &copy; {new Date().getFullYear()} Copyright:{' '}
-        <a className='text-dark hover:text-blue-500' href='https://youtu.be/dQw4w9WgXcQ?si=6RpC-7iNytFMKsoB'>
-          DAME CLICK
-        </a>
+        {/* Información de derechos reservados */}
+        <p className="mt-6 text-sm">
+          © 2024 Plataforma Educativa. Todos los derechos reservados.
+        </p>
       </div>
-    </MDBFooter>
+    </footer>
   );
-}
+};
+
+export default Footer;
