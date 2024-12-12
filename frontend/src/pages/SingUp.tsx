@@ -29,6 +29,7 @@ export default function SingUp() {
 
             if(response.ok){
                 setErrorResponse('');
+                console.log('User created');
 
                 goTo('/login');
             }else{
