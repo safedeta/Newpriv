@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../Auth/constants';
 import { AuthResponseError } from '../types/types';
+import { AuthResponse } from '../types/types';
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -27,8 +28,13 @@ export default function Login() {
 
             if(response.ok){
                 setErrorResponse('');
+                const json = (await response.json()) as AuthResponse;
+                
+                if(json.body.accessToken && json.body.refreshToken){
+                    auth.saveUser(json);
+                }
 
-                goTo('/Home');
+                goTo('/Dasboard');
             }else{
                 const json = (await response.json()) as AuthResponseError;
                 setErrorResponse(json.body.error);
