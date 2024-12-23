@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
 
     //Autenticar usuario
     const accessToken = 'access_token';
-    const refreshToken = 'refresh_token';
+    const refreshToken = 'refresh_token-muy-piola'; //**Esto no deberia ir con lo de variable de entorno?
     const user = {
         id: 1,
         name: 'Administrator',

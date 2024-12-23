@@ -34,7 +34,7 @@ export default function Login() {
                     auth.saveUser(json);
                 }
 
-                goTo('/Dasboard');
+                goTo('/dasboard');
             }else{
                 const json = (await response.json()) as AuthResponseError;
                 setErrorResponse(json.body.error);
