@@ -1,5 +1,5 @@
 const { generateAccessToken } = require("../auth/generateTokens");
-const getTokenFromHeader = require("../auth/getTokenFromHeader");
+const { getTokenFromHeader } = require("../auth/getTokenFromHeader");
 const { verifyRefreshToken } = require("../auth/verifyTokens");
 const { jsonResponse } = require("../lib/jsonResponse");
 const Token = require("../Schema/token");
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
         const payload = verifyRefreshToken(found.token);
         if(payload){
-            const accessToken = generateAccessToken(payload);
+            const accessToken = generateAccessToken(payload.user);
 
             return res.status(200).json(jsonResponse(200, { accessToken }));
         }else{

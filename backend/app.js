@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
+const authenticate = require("./auth/authenticate");
 
 require('dotenv').config();
 
@@ -24,8 +25,8 @@ connectDB();
 app.use('/api/signup', require("./routes/singup.js"));
 app.use('/api/login', require('./routes/login.js'));
 app.use('/api/signout', require('./routes/signout.js'));
-app.use('/api/user', require('./routes/user.js'));
-app.use('/api/todos', require('./routes/todos.js'));
+app.use('/api/user', authenticate, require('./routes/user.js'));
+app.use('/api/todos', authenticate, require('./routes/todos.js'));
 app.use('/api/refresh-token', require('./routes/refreshToken.js'));
 
 

@@ -8,6 +8,7 @@ const AuthContext = createContext({
     getAccesToken: () => {},
     saveUser: (userData: AuthResponse) => {},
     getRefreshToken: () => {},
+    getUser: () => ({} as User | undefined),
 });
 
 AuthProvider.propTypes = {
@@ -22,7 +23,9 @@ export function AuthProvider({children}) {
     //? tal vez esto se pueda omitir
     // const [refreshToken, setRefreshToken] = useState<String>("");
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        checkAuth();
+    }, []);
 
     async function requestNewAccessToken(refreshToken:string){
         try {
@@ -65,7 +68,7 @@ export function AuthProvider({children}) {
                 if(json.error){
                     throw new Error(json.error);
                 }
-                return json;
+                return json.body;
             }else{
                 throw new Error(response.statusText);
             }
@@ -105,10 +108,10 @@ export function AuthProvider({children}) {
     }
 
     function getRefreshToken():string|null {
-        const token = localStorage.getItem("token");
-        if(token){
-            const {refreshToken} = JSON.parse(token);
-            return refreshToken;
+        const tokenData = localStorage.getItem("token");
+        if(tokenData){
+            const token = JSON.parse(tokenData);
+            return token;
         }
         return null;
     }
@@ -117,8 +120,12 @@ export function AuthProvider({children}) {
         saveSessionInfo(userData.body.user, userData.body.accessToken, userData.body.refreshToken);
     }
 
+    function getUser(){
+        return user;
+    }
+
     return (
-        <AuthContext.Provider value={{isAuthenticated, getAccesToken, saveUser, getRefreshToken}}>
+        <AuthContext.Provider value={{isAuthenticated, getAccesToken, saveUser, getRefreshToken, getUser}}>
             {children}
         </AuthContext.Provider>
     );
